@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jay Cho</title>
+<meta name="description" content="Jay Cho builds Reflow: record a web workflow once and get a step-by-step guide that keeps working when the UI changes. Projects with real footage and live demos.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Jay Cho">
+<meta property="og:description" content="Developer and CEO of Guider Inc. Building Reflow: guides that keep working when the UI changes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jayyo.github.io/">
+<meta property="og:image" content="https://jayyo.github.io/media/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="media/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root {
+  --blue: #0046FF;
+  --link: #0046FF;
+  --bg: #FFFFFF;
+  --text: #0F172A;
+  --text-2: #334155;
+  --mute: #64748B;
+  --line: rgba(148, 163, 184, 0.6);
+  --rule: #0F172A;
+  --wash: #F8FAFC;
+  --frame: #0F172A;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --link: #7FA0FF;
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --text-2: #E2E8F0;
+    --mute: #94A3B8;
+    --line: rgba(148, 163, 184, 0.4);
+    --rule: #E2E8F0;
+    --wash: rgba(148, 163, 184, 0.08);
+    --frame: #020617;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--link); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+
+/* masthead */
+.mast { display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 40%); margin-top: 56px; border-bottom: 2px solid var(--rule); }
+.mast-id { padding: 36px 32px 30px 0; display: flex; flex-direction: column; justify-content: flex-end; }
+.mast h1 { margin: 0; font-size: clamp(60px, 9vw, 112px); font-weight: 800; line-height: 0.92; letter-spacing: -0.035em; }
+.mast .role { margin: 22px 0 0; font-size: 22px; font-weight: 600; color: var(--text-2); line-height: 1.35; }
+.mast .place { margin: 2px 0 0; font-size: 22px; font-weight: 500; color: var(--mute); }
+.mast-field { background: var(--blue); color: #fff; padding: 34px 32px 30px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
+.mast-field .name { margin: 0; font-size: 46px; font-weight: 800; letter-spacing: -0.025em; line-height: 1; }
+.mast-field .line { margin: 14px 0 0; font-size: 23px; font-weight: 600; line-height: 1.3; opacity: 0.92; }
+.mast-field nav { font-size: 15px; font-weight: 700; }
+.mast-field nav a { color: #fff; margin-right: 16px; white-space: nowrap; }
+
+.lede { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: 32px; padding: 28px 0 44px; }
+.lede p { margin: 0; font-size: 20px; line-height: 1.6; color: var(--text-2); }
+.lede p b { color: var(--text); }
+.contact { list-style: none; margin: 0; padding: 0; border-top: 1.5px solid var(--line); font-size: 16px; }
+.contact li { border-bottom: 1.5px solid var(--line); padding: 9px 0; display: flex; justify-content: space-between; gap: 12px; }
+.contact span { color: var(--mute); }
+.contact a { font-weight: 700; text-decoration: none; }
+
+/* work */
+.work { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); grid-template-areas: "head media" "body media"; grid-template-rows: auto 1fr; column-gap: 32px; border-top: 2px solid var(--rule); padding: 26px 0 52px; }
+.work .head { grid-area: head; }
+.work .body { grid-area: body; }
+.work .clip { grid-area: media; }
+.label { margin: 0 0 10px; font-size: 14px; font-weight: 700; color: var(--link); letter-spacing: 0.01em; }
+.work h2 { margin: 0 0 12px; font-size: 38px; font-weight: 800; line-height: 1.1; letter-spacing: -0.025em; }
+.work h2 small { display: block; margin-top: 6px; font-size: 20px; font-weight: 600; letter-spacing: 0; color: var(--mute); }
+.work .claim { margin: 0 0 20px; font-size: 18px; line-height: 1.55; color: var(--text-2); }
+.facts { list-style: none; margin: 0 0 20px; padding: 0; border-top: 1.5px solid var(--line); font-size: 15px; line-height: 1.45; }
+.facts li { padding: 9px 0; border-bottom: 1.5px solid var(--line); color: var(--text-2); }
+.facts b { color: var(--text); }
+.actions { display: flex; flex-direction: column; gap: 2px; font-size: 16px; font-weight: 700; }
+.actions a { text-decoration: none; padding: 3px 0; }
+.actions a::after { content: " \2192"; }
+.actions a:hover, .contact a:hover, .item .links a:hover { text-decoration: underline; }
+figure { margin: 0; }
+figure + figure { margin-top: 22px; }
+.media { background: var(--frame); }
+.media video, .media img { display: block; width: 100%; height: auto; }
+figcaption { margin-top: 10px; font-size: 14px; line-height: 1.45; color: var(--mute); }
+pre.run { margin: 0; padding: 22px 24px; background: var(--wash); border-left: 4px solid var(--blue); white-space: pre-wrap; overflow-wrap: anywhere; font: 14px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; color: var(--text); }
+pre.run .cmd { color: var(--link); font-weight: 700; }
+pre.run .no { color: #B42318; font-weight: 700; }
+@media (prefers-color-scheme: dark) { pre.run .no { color: #FCA5A5; } }
+.bench { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; gap: 8px 14px; align-items: center; font-size: 15px; }
+.bench .bar { height: 14px; background: var(--wash); outline: 1.5px solid var(--line); outline-offset: -1.5px; }
+.bench .bar i { display: block; height: 100%; background: var(--blue); }
+.bench .base i { background: var(--mute); }
+.bench .num { font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+
+/* more */
+.more { background: var(--wash); border-top: 2px solid var(--rule); padding: 28px 0 44px; }
+.more h2 { margin: 0 0 18px; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.item { border-top: 1.5px solid var(--line); padding: 16px 0 20px; }
+.item h3 { margin: 0 0 6px; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+.item p { margin: 0 0 8px; color: var(--text-2); font-size: 16px; line-height: 1.55; }
+.item .links { font-size: 15px; font-weight: 700; }
+.item .links a { margin-right: 14px; text-decoration: none; }
+.item .links a::after { content: " \2192"; }
+.item .shot { display: block; margin-bottom: 12px; }
+
+footer { padding: 26px 0 48px; font-size: 15px; color: var(--mute); border-top: 2px solid var(--rule); }
+footer p { margin: 0; }
+
+@media (max-width: 860px) {
+  .wrap { padding: 0 16px; }
+  .mast { grid-template-columns: minmax(0, 1fr); margin-top: 28px; }
+  .mast-id { padding: 0 0 22px; }
+  .mast .role, .mast .place { font-size: 19px; }
+  .mast-field { padding: 24px 20px; }
+  .mast-field .name { font-size: 36px; }
+  .mast-field .line { font-size: 20px; }
+  .lede { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .lede p { font-size: 18px; }
+  .work { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "media" "body"; grid-template-rows: auto; row-gap: 18px; padding-bottom: 40px; }
+  .work h2 { font-size: 32px; }
+  .work .claim { margin-bottom: 0; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  pre.run { padding: 16px; font-size: 12.5px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <div class="mast-id">
+    <h1>Jay Cho</h1>
+    <p class="role">Developer and CEO, Guider Inc.</p>
+    <p class="place">Sejong, South Korea</p>
+  </div>
+  <div class="mast-field">
+    <div>
+      <p class="name">Reflow</p>
+      <p class="line">Guides that keep working when the UI changes.</p>
+    </div>
+    <nav aria-label="Reflow">
+      <a href="https://reflowguide.com">reflowguide.com</a>
+      <a href="https://chromewebstore.google.com/detail/reflow/oilikinlapenimjpkcilbjccjilnihef">Chrome Web Store</a>
+      <a href="https://microsoftedge.microsoft.com/addons/detail/reflow/akpfafggaihnclnelalfffcgaknpipgi">Edge Add-ons</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="lede">
+  <p>I build <b>Reflow</b>: record a web workflow once and it becomes a step-by-step guide that keeps working when the software's UI changes. It's on the Chrome Web Store and Edge Add-ons with <b>six paying customers in Korea</b>, and its first prototype took <b>1st place among 3,295 participants</b> at the OpenAI x Primer x Jocoding AI Hackathon 2026. Now I'm working on self-healing guides.</p>
+  <ul class="contact">
+    <li><span>Code</span><a href="https://github.com/Jayyo">github.com/Jayyo</a></li>
+    <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/jaycho-reflow">jaycho-reflow</a></li>
+    <li><span>Company</span><a href="https://reflowguide.com">reflowguide.com</a></li>
+    <li><span>Community</span><span>350+ members, 40+ sessions in Sejong</span></li>
+  </ul>
+</section>
+
+<section class="work" id="reflow">
+  <div class="head">
+    <p class="label">Product</p>
+    <h2>Reflow</h2>
+    <p class="claim">Record a workflow once. Clicks, typing and page changes become numbered steps with screenshots, and Reflow replays the guide on the real page, highlighting each field in order.</p>
+  </div>
+  <div class="body">
+    <ul class="facts">
+      <li>Chrome and Edge extension, <b>six paying customers</b> in Korea</li>
+      <li>Built for onboarding material, internal manuals and customer how-tos</li>
+      <li>One recording becomes a document, PDF, video and an overlay on the live page</li>
+      <li>Production code is private</li>
+    </ul>
+    <div class="actions">
+      <a href="https://reflowguide.com">reflowguide.com</a>
+      <a href="https://chromewebstore.google.com/detail/reflow/oilikinlapenimjpkcilbjccjilnihef">Chrome Web Store</a>
+      <a href="https://microsoftedge.microsoft.com/addons/detail/reflow/akpfafggaihnclnelalfffcgaknpipgi">Edge Add-ons</a>
+    </div>
+  </div>
+  <figure class="clip">
+    <div class="media"><video src="media/reflow-replay.mp4" poster="media/reflow-replay.jpg" width="1920" height="1080" muted loop playsinline controls preload="none" aria-describedby="cap-reflow"></video></div>
+    <figcaption id="cap-reflow">The guide reopens LinkedIn's event form and highlights each field in order while the side panel follows the steps. An excerpt from the product demo; the account email is blurred.</figcaption>
+  </figure>
+</section>
+
+<section class="work" id="prototype">
+  <div class="head">
+    <p class="label">Hackathon prototype · 1st place among 3,295</p>
+    <h2>ChatGPT Navigator<small>Where Reflow started</small></h2>
+    <p class="claim">Type a goal such as "create a custom GPT". The extension reads the live page, an LLM plans the steps, and it highlights the next thing to click, moves on as you act and answers questions about the current step.</p>
+  </div>
+  <div class="body">
+    <ul class="facts">
+      <li><b>1st place among 3,295 participants</b>, OpenAI x Primer x Jocoding AI Hackathon 2026</li>
+      <li>Built in February 2026 as a Manifest V3 extension; works on chatgpt.com only</li>
+      <li>Detects wrong clicks and waits for the page to settle</li>
+    </ul>
+    <div class="actions">
+      <a href="https://github.com/Jayyo/reflow">Code</a>
+      <a href="https://www.youtube.com/watch?v=VklAdO7NaEU">Full demo on YouTube (2:34)</a>
+    </div>
+  </div>
+  <figure class="clip">
+    <div class="media"><video src="media/reflow-prototype.mp4" poster="media/reflow-prototype.jpg" width="1920" height="1080" muted loop playsinline controls preload="none" aria-describedby="cap-prototype"></video></div>
+    <figcaption id="cap-prototype">Step 5 explains ChatGPT's GPT editor and answers a question about it, then the guide moves on and highlights the name field. An excerpt from the hackathon demo.</figcaption>
+  </figure>
+</section>
+
+<section class="work" id="agent-page-helper">
+  <div class="head">
+    <p class="label">Library · browser agents</p>
+    <h2>agent-page-helper</h2>
+    <p class="claim">One dependency-free script for LLM browser agents. It lists a page's controls with short refs and acts on those refs: it fills React-controlled inputs, refuses to click what is covered, and reaches into same-origin iframes and open shadow roots.</p>
+  </div>
+  <div class="body">
+    <div class="actions">
+      <a href="https://github.com/Jayyo/agent-page-helper">Code and benchmark</a>
+    </div>
+  </div>
+  <div class="clip">
+    <figure>
+<pre class="run"><span class="cmd">&gt; __aph__.snapshot({ format: 'text' })</span>
+h1 "Profile settings"
+[gngc1] textbox "Display name" value="Mina"
+[gngc2] button "Save changes" covered-by=[gngc3] div#consent
+[gngc4] button "Accept all"
+<span class="cmd">&gt; __aph__.click('gngc2')</span>
+{"ok":false,"error":{"code":"<span class="no">OCCLUDED</span>","message":"button#save is covered by div#consent", ...}}
+<span class="cmd">&gt; __aph__.click('gngc4')</span>
+{"ok":true,"ref":"gngc4"}
+<span class="cmd">&gt; __aph__.click('gngc2')</span>
+{"ok":true,"ref":"gngc2"}</pre>
+      <figcaption>A real run on a test page where a cookie banner covers the Save button. The error line is shortened.</figcaption>
+    </figure>
+    <figure>
+      <div class="bench" role="img" aria-label="Median snapshot size on ten public pages: 1,413 tokens for agent-page-helper, 13,443 for Playwright's AI-mode aria snapshot.">
+        <span>agent-page-helper</span><span class="bar"><i style="width:10.5%"></i></span><span class="num">1,413</span>
+        <span>Playwright AI snapshot</span><span class="bar base"><i style="width:100%"></i></span><span class="num">13,443</span>
+      </div>
+      <figcaption>Median tokens per snapshot on ten public pages. It is smaller because it keeps at most 100 controls and 400 characters of text; the aria snapshot carries much more of the page.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="work" id="tongue-of-war">
+  <div class="head">
+    <p class="label">Game · LLM opponent</p>
+    <h2>Tongue of War<small>강령전쟁</small></h2>
+    <p class="claim">Summon an army by writing a Korean sentence, and an LLM opponent answers with sentences of its own. Both go through the same deterministic parser and a budget compiler, so a sentence can shape an army but never buy it extra stats.</p>
+  </div>
+  <div class="body">
+    <ul class="facts">
+      <li>OpenAI, Gemini, DeepSeek or any OpenAI-compatible server as the opponent</li>
+      <li>Fixed 50 ms simulation with a headless balance harness</li>
+      <li>three.js renderer with cut-out rigs</li>
+    </ul>
+    <div class="actions">
+      <a href="https://jayyo.github.io/tongue-of-war/">Play in your browser (vs. the scripted bot)</a>
+      <a href="https://github.com/Jayyo/tongue-of-war">Code</a>
+    </div>
+  </div>
+  <figure class="clip">
+    <div class="media"><video src="media/tongue-of-war.mp4" poster="media/tongue-of-war.jpg" width="1280" height="800" muted loop playsinline controls preload="none" aria-describedby="cap-tow"></video></div>
+    <figcaption id="cap-tow">A real match against gpt-6-luna, recorded headlessly. A Korean sentence for three heavy tanks becomes three guards drawn as landships inside a 120-point budget, and the model answers with a sentence of its own. The game clock is paused while it answers, and one stretch is shown at 4x speed.</figcaption>
+  </figure>
+</section>
+
+</main>
+</div>
+
+<section class="more" aria-labelledby="more-title">
+  <div class="wrap">
+    <h2 id="more-title">More projects</h2>
+    <div class="grid">
+      <div class="item">
+        <div class="shot media"><video src="media/loop-randy.mp4" poster="media/loop-randy.jpg" width="1280" height="800" muted loop playsinline controls preload="none" aria-label="Loop Randy: monsters run laps around the lane, and three tier-1 Vanguards merge into one tier-2 Vanguard."></video></div>
+        <h3>Loop Randy</h3>
+        <p>A 3D random defense game in the style of Warcraft III custom maps, built in React Three Fiber with <a href="https://github.com/vpsxkqktm">Jinwoo Choung</a>. Summon, merge, survive 20 waves and the bosses.</p>
+        <p class="links"><a href="https://jayyo.github.io/loop-randy/">Play in your browser</a><a href="https://github.com/Jayyo/loop-randy">Code</a></p>
+      </div>
+      <div class="item">
+        <a class="shot" href="https://jayyo.github.io/gomoku/"><div class="media"><img src="media/omok.jpg" width="1280" height="800" loading="lazy" alt="Omok: the computer wins with a diagonal five under Renju rules."></div></a>
+        <h3>Omok</h3>
+        <p>Gomoku in plain JavaScript. The computer searches for forced wins in a Web Worker, and Renju's forbidden moves follow the RIF definitions.</p>
+        <p class="links"><a href="https://jayyo.github.io/gomoku/">Play in your browser</a><a href="https://github.com/Jayyo/gomoku">Code</a></p>
+      </div>
+      <div class="item">
+        <h3>DART Insider</h3>
+        <p>Korean executives' trades in their own company's shares, parsed from OpenDART filings, with amounts from the filed prices and a price chart per trade.</p>
+        <p class="links"><a href="https://github.com/Jayyo/dart-insider">Code</a></p>
+      </div>
+      <div class="item">
+        <h3>Lecture Q&amp;A</h3>
+        <p>Pause a lecture video, ask a question, and get an answer from the timestamped transcript with links back to the moments it used.</p>
+        <p class="links"><a href="https://github.com/Jayyo/lecture-qa">Code</a></p>
+      </div>
+      <div class="item">
+        <h3>AI News Today</h3>
+        <p>A Korean AI news digest built from RSS feeds. A model picks and summarizes the stories, and a summary is published only if every number and quoted phrase in it appears in the source; otherwise the outlet's lede is shown.</p>
+        <p class="links"><a href="https://jayyo.github.io/ai-news-today/">Read it</a><a href="https://github.com/Jayyo/ai-news-today">Code</a></p>
+      </div>
+      <div class="item">
+        <h3>gpt-sovits-simple</h3>
+        <p>A command line tool and Python API for GPT-SoVITS text-to-speech: give it text and a short reference clip, get a WAV in that voice.</p>
+        <p class="links"><a href="https://github.com/Jayyo/gpt-sovits-simple">Code</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <p>Jay Cho · <a href="https://github.com/Jayyo">github.com/Jayyo</a> · <a href="https://www.linkedin.com/in/jaycho-reflow">LinkedIn</a> · <a href="https://github.com/Jayyo/jayyo.github.io">Source of this page</a></p>
+  </footer>
+</div>
+
+<script>
+// Clips play muted while at least 40% visible and pause when scrolled away or
+// when the tab is hidden. A clip the visitor paused stays paused. With reduced
+// motion nothing starts on its own; the controls are always there.
+(function () {
+  var videos = Array.prototype.slice.call(document.querySelectorAll('video'));
+  var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var visible = new Map();
+  var heldByUser = new Set();
+  var ours = new Set();
+
+  function sync(v) {
+    var go = !motion.matches && !document.hidden && visible.get(v) && !heldByUser.has(v);
+    if (go && v.paused) {
+      ours.add(v);
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { ours.delete(v); });
+    } else if (!go && !v.paused) {
+      ours.add(v);
+      v.pause();
+    }
+  }
+  function syncAll() { videos.forEach(sync); }
+
+  videos.forEach(function (v) {
+    v.addEventListener('play', function () {
+      if (ours.has(v)) { ours.delete(v); return; }
+      heldByUser.delete(v);
+    });
+    v.addEventListener('pause', function () {
+      if (ours.has(v)) { ours.delete(v); return; }
+      heldByUser.add(v);
+    });
+  });
+
+  if (!('IntersectionObserver' in window)) return;
+  var seen = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      visible.set(e.target, e.isIntersecting && e.intersectionRatio >= 0.4);
+      sync(e.target);
+    });
+  }, { threshold: [0, 0.4] });
+  videos.forEach(function (v) { seen.observe(v); });
+  document.addEventListener('visibilitychange', syncAll);
+  if (motion.addEventListener) motion.addEventListener('change', syncAll);
+})();
+</script>
+</body>
+</html>
